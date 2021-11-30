@@ -8,7 +8,8 @@ import backslash = require('backslash');
 
 var packageJson = require('../package.json');
 const ROLLOUT_PERCENTAGE_REGEX: RegExp = /^(100|[1-9][0-9]|[1-9])%?$/;
-const USAGE_PREFIX = 'Usage: code-push';
+const SCRIPT_NAME = 'code-push';
+const USAGE_PREFIX = 'Usage: ' + SCRIPT_NAME;
 
 // Command categories are:  access-key, app, release, deployment, deployment-key, login, logout, register
 var isValidCommandCategory = false;
@@ -30,12 +31,12 @@ export function showHelp(showRootDescription?: boolean): void {
             console.log(chalk.cyan('======================================'));
             console.log('');
             console.log(
-                "Mobile Center CodePush is a service that enables you to deploy mobile app updates directly to your users' devices.\n",
+                "CodePush is a service that enables you to deploy mobile app updates directly to your users' devices.\n",
             );
             updateCheck();
         }
 
-        yargs.showHelp();
+        yargs.scriptName(SCRIPT_NAME).showHelp();
         wasHelpShown = true;
     }
 }
@@ -525,7 +526,7 @@ var argv = yargs
         yargs
             .usage(USAGE_PREFIX + ' login <serverUrl> [options]')
             .demand(/*count*/ 1, /*max*/ 1)
-            .example('login', 'Logs in to the Mobile Center server')
+            .example('login https://codepushserver', 'Logs in to the Code Push Server')
             .example(
                 'login https://codepushserver --accessKey mykey',
                 'Logs in on behalf of the user who owns and created the access key "mykey"',
@@ -714,13 +715,13 @@ var argv = yargs
             addCommonConfiguration(yargs);
         },
     )
-    .command('register', 'Register a new Mobile Center account', (yargs: yargs.Argv) => {
+    .command('register', 'Register a new Code Push account', (yargs: yargs.Argv) => {
         isValidCommandCategory = true;
         isValidCommand = true;
         yargs
             .usage(USAGE_PREFIX + ' register <serverUrl>')
             .demand(/*count*/ 1, /*max*/ 1)
-            .example('register', 'Registers a new Mobile Center account')
+            .example('register https://codepushserver', 'Registers a new Code Push account')
             .example(
                 'register https://codepushserver --proxy http://someproxy.com:455',
                 'Registers with the specified proxy url',
