@@ -1,7 +1,7 @@
 {
-  "name": "@shm-open/code-push-cli",
+  "name": "@byronigoe/code-push-cli",
   "version": "2.5.2",
-  "description": "Management CLI for the CodePush service",
+  "description": "Management CLI for a self-hosted CodePush Server",
   "main": "bin/cli.js",
   "scripts": {
     "start": "tsc --watch",
@@ -10,14 +10,14 @@
     "test": "echo 'no tests'"
   },
   "bin": {
-    "code-push": "bin/cli.js"
+    "code-push": "./bin/cli.js"
   },
   "files": [
-    "bin/"
+    "bin"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/shm-open/code-push-cli"
+    "url": "https://github.com/byronigoe/code-push-cli"
   },
   "keywords": [
     "code",
@@ -26,8 +26,8 @@
     "react-native",
     "react"
   ],
-  "homepage": "https://github.com/shm-open/code-push-cli",
-  "author": "shihuimiao",
+  "homepage": "https://github.com/byronigoe/code-push-cli",
+  "author": "byronigoe",
   "license": "MIT",
   "dependencies": {
     "backslash": "0.2.0",
